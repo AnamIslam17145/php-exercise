@@ -10,7 +10,12 @@ include 'connection.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- ./Bootstra CDN-->
+
     <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
     <title>Products</title>
 </head>
@@ -31,42 +36,42 @@ include 'connection.php';
                 <th>Data Insertion Date</th>
                 <th>Operations</th>
             </tr>
-            
+
             </thead>
             <tbody>
-            
+
             <?php
-            $sql = "Select * from `product_table`";
-            $result = mysqli_query($con, $sql);
-            $serial = 0;
-            while ($row = mysqli_fetch_assoc($result)) {
-                $pid = $row['product_id'];
-                $pname = $row['product_name'];
-                $ptype = $row['product_catagory'];
-                $cname = $row['product_company'];
-                $edate = $row['creation_date'];
-                $serial = $serial + 1;
+$sql    = "Select * from `product_table`";
+$result = mysqli_query( $con, $sql );
+$serial = 0;
+while ( $row = mysqli_fetch_assoc( $result ) ) {
+    $pid    = $row['product_id'];
+    $pname  = $row['product_name'];
+    $ptype  = $row['product_catagory'];
+    $cname  = $row['product_company'];
+    $edate  = $row['creation_date'];
+    $serial = $serial + 1;
 
-                $rowcontrol = $serial % 2;
+    $rowcontrol = $serial % 2;
 
-                echo '
-                    <tr class="tr-class-'.$rowcontrol.'" id="tr-'.$pid.'"> 
+    echo '
+                    <tr class="tr-class-' . $rowcontrol . '" id="tr-' . $pid . '">
                         <td>' . $serial . '</td>
                         <td>' . $pname . '</td>
                         <td>' . $ptype . '</td>
                         <td>' . $cname . '</td>
                         <td>' . $edate . '</td>
                         <td>
-                        <a href="update_product.php?updateid=' . $pid . '"><button class="update-btn">Update</button></a> 
-                        <a href="javascript:void(0)" onclick="delete_product('.$pid.')"><button class="delete-btn">Delete</button></a> 
+                        <a href="update_product.php?updateid=' . $pid . '"><button class="btn btn-primary btn-sm">Edit</button></a>
+                        <a href="javascript:void(0)" onclick="delete_product(' . $pid . ')"><button class="btn btn-danger btn-sm">Delete</button></a>
                         </td>
                     </tr>
                     ';
-                
-            }
-            ?>
 
-    
+}
+?>
+
+
             </tbody>
         </table>
 
@@ -81,7 +86,7 @@ include 'connection.php';
 
 <script>
 function delete_product($pid){
-    
+
     var j_id = $pid;
     let text = "You Want to delete this "+j_id+" item?";
 

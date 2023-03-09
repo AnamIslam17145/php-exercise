@@ -9,7 +9,7 @@
     if($result)
     {
         //echo "Product deleted";
-        //header('location:products.php');
+        //header('location:index.php');
         echo json_encode(array("statusCode"=>200));
         
 

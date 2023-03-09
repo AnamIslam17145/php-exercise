@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
         //echo "Data Updated";
-        header('location:products.php');
+        header('location:index.php');
     } else {
         die(mysqli_error($con));
     }

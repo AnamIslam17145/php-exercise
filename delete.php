@@ -12,7 +12,7 @@
     if($result)
     {
         //echo "Product deleted";
-        header('location:products.php');
+        header('location:index.php');
 
     }
     else{
