@@ -1,0 +1,81 @@
+
+
+body{
+    background-color: skyblue;
+    font-family: Sans-serif, 'Times New Roman', Times, serif;
+}
+button{
+    border: none;
+    background-color: #007acc;
+    border-radius: 4px;
+    color: whitesmoke;
+    height: 40px;   
+    width: 100px;
+}
+
+button:hover{
+    background-color: #ffffff;
+}
+
+button.delete-btn:hover{
+    border: red;
+    color: red;
+}
+
+button.submit-btn-class:hover{
+    border: #007acc;
+    color: #007acc;
+}
+
+button.update-btn:hover{
+    border: #059862;
+    color: #059862;
+}
+
+input, select{
+    height: 25px;
+}
+
+td{
+    padding: 10px;
+}
+
+th {
+    background-color: green;
+    color: whitesmoke;
+    padding: 10px;
+    text-align: center;
+  }
+
+.container{
+    align-items: center;
+    background-color: whitesmoke;
+    display: inline-block;
+    margin-left: 20%;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.delete-btn{
+    background-color: red;
+}
+
+.submit-btn-class{
+    background-color: #007acc;
+    color: #ffffff;
+}
+
+
+
+.tr-class-1{
+    background-color: #e6ffe6;
+}
+
+.tr-class-2{
+    background-color: #ffffff;
+}
+
+.update-btn{
+    background-color: #059862;
+}
+
