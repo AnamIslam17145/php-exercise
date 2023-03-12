@@ -22,39 +22,46 @@ include 'connection.php';
 
 <body>
     <div class="container">
-        <h4>This is product page</h4>
-        <a href="add_product.php"><button class="submit-btn-class">Add Product</button></a>
-        <br><br><br><br>
+        <div class="mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4>This is product page</h4>
+                </div>
 
-        <table id="product_table">
-            <thead>
-            <tr>
-                <th>Serial No.</th>
-                <th>Product Name</th>
-                <th>Product Catagory</th>
-                <th>Company</th>
-                <th>Data Insertion Date</th>
-                <th>Operations</th>
-            </tr>
+                <div class="card-body">
+                    <div class="my-2">
+                        <a href="add_product.php"><button class="btn btn-primary btn-sm">Add Product</button></a>
+                    </div>
+                    <div class="my-4">
+                        <table id="product_table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Serial No.</th>
+                                    <th>Product Name</th>
+                                    <th>Product Catagory</th>
+                                    <th>Company</th>
+                                    <th>Data Insertion Date</th>
+                                    <th>Operations</th>
+                                </tr>
 
-            </thead>
-            <tbody>
+                            </thead>
+                            <tbody>
 
-            <?php
-$sql    = "Select * from `product_table`";
-$result = mysqli_query( $con, $sql );
-$serial = 0;
-while ( $row = mysqli_fetch_assoc( $result ) ) {
-    $pid    = $row['product_id'];
-    $pname  = $row['product_name'];
-    $ptype  = $row['product_catagory'];
-    $cname  = $row['product_company'];
-    $edate  = $row['creation_date'];
-    $serial = $serial + 1;
+                                <?php
+                                $sql    = "Select * from `product_table`";
+                                $result = mysqli_query($con, $sql);
+                                $serial = 0;
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $pid    = $row['product_id'];
+                                    $pname  = $row['product_name'];
+                                    $ptype  = $row['product_catagory'];
+                                    $cname  = $row['product_company'];
+                                    $edate  = $row['creation_date'];
+                                    $serial = $serial + 1;
 
-    $rowcontrol = $serial % 2;
+                                    $rowcontrol = $serial % 2;
 
-    echo '
+                                    echo '
                     <tr class="tr-class-' . $rowcontrol . '" id="tr-' . $pid . '">
                         <td>' . $serial . '</td>
                         <td>' . $pname . '</td>
@@ -67,13 +74,22 @@ while ( $row = mysqli_fetch_assoc( $result ) ) {
                         </td>
                     </tr>
                     ';
+                                }
+                                ?>
 
-}
-?>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
 
 
-            </tbody>
-        </table>
+
+
 
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -84,32 +100,30 @@ while ( $row = mysqli_fetch_assoc( $result ) ) {
         });
     </script>
 
-<script>
-function delete_product($pid){
+    <script>
+        function delete_product($pid) {
 
-    var j_id = $pid;
-    let text = "You Want to delete this "+j_id+" item?";
+            var j_id = $pid;
+            let text = "You Want to delete this item?";
 
-    if(confirm(text)==true)
-    {
-        x = j_id;
-        jQuery.ajax({
-            url:'delete_ajax.php',
-            type: 'post',
-            data:'id='+j_id,
-            success: function(result){
-                document.getElementById("tr-"+j_id).setAttribute("hidden",true);
-                alert(result);
+            if (confirm(text) == true) {
+                x = j_id;
+                jQuery.ajax({
+                    url: 'delete_ajax.php',
+                    type: 'post',
+                    data: 'id=' + j_id,
+                    success: function(result) {
+                        document.getElementById("tr-" + j_id).setAttribute("hidden", true);
+                        alert(result);
+                    }
+                })
+            } else {
+                x = "canceled";
             }
-        })
-    }
-    else{
-        x = "canceled";
-    }
 
-    document.getElementById("confirm_check").innerHTML = x;
-}
-</script>
+            document.getElementById("confirm_check").innerHTML = x;
+        }
+    </script>
 </body>
 
 </html>

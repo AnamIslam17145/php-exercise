@@ -38,41 +38,77 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>exp Login</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- ./Bootstra CDN-->
+
+    <title>Update Product</title>
 </head>
 
 <body>
     <div class="container">
-        <h2>HTML Forms For Updating Document</h2>
+        <div class="row mt-5">
+            <div class="card px-0">
+                <div class="card-header">
+                    <h2>HTML Forms For Updating Document</h2>
+                </div>
 
-        <form method="post">
-            <label>Product Name:</label>
-            <input type="text" id="pname" name="pname" placeholder="Enter Your Product Name" autocomplete="off" value=<?php echo $pname; ?>>
-            <br><br>
-            <label>Type:</label>
-            
-            <select id="ptype" name="ptype" required>
-                
-                <option selected disabled value=<?php echo $ptype ?>><?php echo $ptype ?></option>
-                <?php 
-                $sql= "Select * from `product_catagory_table`";
-                $result = mysqli_query($con, $sql);
-                while($row = mysqli_fetch_assoc($result)){
-                    $pcatagory = $row['product_catagory'];
-                    echo '<option value='.$pcatagory.'>'.$pcatagory.'</option>';
-            }
-                ?>
-            </select>
-            <br><br>
-            <label>Company:</label>
-            <input type="text" id="cname" name="cname" placeholder="Enter Company Name Here" autocomplete="on" value=<?php echo $cname; ?>>
-            <br><br>
-            <label>Entry Date:</label>
-            <input type="date" id="edate" name="edate" value=<?php echo $edate; ?>>
-            <br><br><br>
-            <button class="submit-btn-class" type="submit" name="submit">Submit</button>            
-        </form>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="form-group row my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="pname">Product Name:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <input type="text" id="pname" name="pname" placeholder="Enter Your Product Name" autocomplete="off" value="<?php echo $pname; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="ptype">Type:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <select id="ptype" name="ptype" required>
+
+                                    <option selected value="<?php echo $ptype ?>"><?php echo $ptype ?></option>
+                                    <?php
+                                    $sql = "Select * from `product_catagory_table`";
+                                    $result = mysqli_query($con, $sql);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $pcatagory = $row['product_catagory'];
+                                        echo '<option value=' . $pcatagory . '>' . $pcatagory . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="cname">Company:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                            <input type="text" id="cname" name="cname" placeholder="Enter Company Name Here" autocomplete="on" value="<?php echo $cname; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row my-2">
+                            <div class="col-sm-12 col-md-4">
+                            <label for="edate">Entry Date:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                            <input type="date" id="edate" name="edate" value="<?php echo $edate; ?>">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+
+
+
     </div>
 
 </body>

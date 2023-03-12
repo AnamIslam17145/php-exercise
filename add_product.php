@@ -2,7 +2,7 @@
 
 include 'connection.php';
 
-if ( isset( $_POST['submit'] ) ) {
+if (isset($_POST['submit'])) {
     $pname = $_POST['pname'];
     $ptype = $_POST['ptype'];
     $cname = $_POST['cname'];
@@ -10,13 +10,13 @@ if ( isset( $_POST['submit'] ) ) {
 
     $sql = "insert into `product_table` (product_name, product_catagory, product_company, creation_date) values
     ('$pname', '$ptype', '$cname', '$edate')";
-    $result = mysqli_query( $con, $sql );
+    $result = mysqli_query($con, $sql);
 
-    if ( $result ) {
+    if ($result) {
         //echo "Data Inserted";
-        header( 'location:index.php' );
+        header('location:index.php');
     } else {
-        die( mysqli_error( $con ) );
+        die(mysqli_error($con));
     }
 }
 ?>
@@ -39,69 +39,69 @@ if ( isset( $_POST['submit'] ) ) {
 <body>
     <div class="container">
         <div class="row mt-5">
-        <div class="card px-0">
-            <div class="card-header">
-            <h2>Add new product</h2>
-            </div>
-
-            <form method="post">
-            <div class="card-body">
-                <div class="row form-group my-2">
-                        <div class="col-sm-12 col-md-4">
-                            <label for="pname">Product Name:</label>
-                        </div>
-                        <div class="col-sm-12 col-md-8">
-                            <input type="text" id="pname" name="pname" class="form-control" placeholder="Enter Your Product Name" autocomplete="off" required>
-                        </div>
+            <div class="card px-0">
+                <div class="card-header">
+                    <h2>Add new product</h2>
                 </div>
 
-                <div class="row form-group my-2">
-                        <div class="col-sm-12 col-md-4">
-                            <label for="ptype">Type:</label>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="row form-group my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="pname">Product Name:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <input type="text" id="pname" name="pname" class="form-control" placeholder="Enter Your Product Name" autocomplete="off" required>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-8">
-                            <select id="ptype"  class="form-control"  name="ptype" required>
-                                <option value="">-- Please select an option --</option>
-                                <?php
-                                $sql    = "Select * from `product_catagory_table`";
-                                $result = mysqli_query( $con, $sql );
-                                while ( $row = mysqli_fetch_assoc( $result ) ) {
-                                    $pcatagory = $row['product_catagory'];
-                                    echo '<option value=' . $pcatagory . '>' . $pcatagory . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                </div>
 
-                <div class="row form-group my-2">
-                        <div class="col-sm-12 col-md-4">
-                        <label for="cname">Company:</label>
+                        <div class="row form-group my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="ptype">Type:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <select id="ptype" class="form-control" name="ptype" required>
+                                    <option value="">-- Please select an option --</option>
+                                    <?php
+                                    $sql    = "Select * from `product_catagory_table`";
+                                    $result = mysqli_query($con, $sql);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $pcatagory = $row['product_catagory'];
+                                        echo '<option value=' . $pcatagory . '>' . $pcatagory . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-8">
-                        <input type="text" id="cname" name="cname" class="form-control" placeholder="Enter Company Name Here" autocomplete="on" required>
-                        </div>
-                </div>
 
-                <div class="row form-group my-2">
-                        <div class="col-sm-12 col-md-4">
-                        <label for="edate">Product Entry Date:</label>
+                        <div class="row form-group my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="cname">Company:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <input type="text" id="cname" name="cname" class="form-control" placeholder="Enter Company Name Here" autocomplete="on" required>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-8">
-                        <input type="date" id="edate"  class="form-control" name="edate" required>
+
+                        <div class="row form-group my-2">
+                            <div class="col-sm-12 col-md-4">
+                                <label for="edate">Product Entry Date:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-8">
+                                <input type="date" id="edate" class="form-control" name="edate" required>
+                            </div>
                         </div>
-                </div>
 
-            
-           
-            
-      
-            <button class="btn btn-primary btn-sm" type="submit" name="submit">Add Product</button>
 
-        </form>
+
+
+
+                        <button class="btn btn-primary btn-sm" type="submit" name="submit">Add Product</button>
+
+                </form>
             </div>
         </div>
-        </div>
+    </div>
 
 
     </div>
