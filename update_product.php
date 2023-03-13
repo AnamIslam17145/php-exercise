@@ -53,7 +53,6 @@ if (isset($_POST['submit'])) {
                 <div class="card-header">
                     <h2>HTML Forms For Updating Document</h2>
                 </div>
-
                 <form method="post">
                     <div class="card-body">
                         <div class="form-group row my-2">
@@ -61,7 +60,7 @@ if (isset($_POST['submit'])) {
                                 <label for="pname">Product Name:</label>
                             </div>
                             <div class="col-sm-12 col-md-8">
-                                <input type="text" id="pname" name="pname" placeholder="Enter Your Product Name" autocomplete="off" value="<?php echo $pname; ?>">
+                                <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter Your Product Name" autocomplete="off" value="<?php echo $pname; ?>">
                             </div>
                         </div>
                         <div class="form-group row my-2">
@@ -69,7 +68,7 @@ if (isset($_POST['submit'])) {
                                 <label for="ptype">Type:</label>
                             </div>
                             <div class="col-sm-12 col-md-8">
-                                <select id="ptype" name="ptype" required>
+                                <select id="ptype" name="ptype" class="form-control" required>
 
                                     <option selected value="<?php echo $ptype ?>"><?php echo $ptype ?></option>
                                     <?php
@@ -88,7 +87,7 @@ if (isset($_POST['submit'])) {
                                 <label for="cname">Company:</label>
                             </div>
                             <div class="col-sm-12 col-md-8">
-                            <input type="text" id="cname" name="cname" placeholder="Enter Company Name Here" autocomplete="on" value="<?php echo $cname; ?>">
+                            <input type="text" id="cname" class="form-control" name="cname" placeholder="Enter Company Name Here" autocomplete="on" value="<?php echo $cname; ?>">
                             </div>
                         </div>
                         <div class="form-group row my-2">
@@ -96,10 +95,11 @@ if (isset($_POST['submit'])) {
                             <label for="edate">Entry Date:</label>
                             </div>
                             <div class="col-sm-12 col-md-8">
-                            <input type="date" id="edate" name="edate" value="<?php echo $edate; ?>">
+                            <input type="date" id="edate" class="form-control" name="edate" value="<?php echo $edate; ?>">
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                        <button class="btn btn-primary btn-sm" type="submit" name="submit">Submit</button>
+                        <a href="index.php"class="btn btn-danger btn-sm">Back</a>
                     </div>
                     
                 </form>

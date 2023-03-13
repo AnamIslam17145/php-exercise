@@ -92,12 +92,8 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-
-
-
-
                         <button class="btn btn-primary btn-sm" type="submit" name="submit">Add Product</button>
-
+                        <a href="index.php" class="btn btn-danger btn-sm">Back</a>
                 </form>
             </div>
         </div>
